@@ -34,6 +34,14 @@ When('clicar em Cadastrar', ()=>{
     pageRegister.clickButtonSave()
 })
 
+When('clicar em Cadastrar2', ()=>{
+    cy.intercept('POST', 'https://raromdb-3c39614e42d4.herokuapp.com/api/users', {
+        statusCode: 409,
+    }).as('fakeUser')
+
+
+    pageRegister.clickButtonSave()
+})
 Then('o usuário será cadastrado como usuário comum', ()=>{
     cy.intercept('POST', 'https://raromdb-3c39614e42d4.herokuapp.com/api/users',).as('sucess')
 
@@ -44,7 +52,6 @@ Then('o usuário será cadastrado como usuário comum', ()=>{
 })
 
 When('preencher o formulário com email já cadastrado', ()=>{
-
     pageRegister.typeEmail('joana@gmail.com')
 
 })
@@ -54,39 +61,8 @@ When('preencher o email com {string}', (string)=>{
 })
 
 Then('o usuário não será cadastrado e receberá um aviso {string}', (string)=>{
-    if(string == "E-mail já cadastrado. Utilize outro e-mail"){
-        cy.intercept('POST', 'https://raromdb-3c39614e42d4.herokuapp.com/api/users', {
-            statusCode: 409,
-        }).as('fakeUser')
-    
-        cy.wait('@fakeUser')
-        
-        cy.contains(string).should('be.visible')
-    }
+    cy.contains(string).should('be.visible')
 
-    if(string == "Não foi possível cadastrar o usuário."){
-        cy.contains(string).should('be.visible')
-    }
-
-    if(string == "Informe o e-mail"){
-        cy.contains(string).should('be.visible')
-    }
-
-    if(string == "Campo obrigatório"){
-        cy.contains(string).should('be.visible')
-    }
-
-    if(string == "Informe o nome"){
-        cy.contains(string).should('be.visible')
-    }
-
-    if(string == "As senhas devem ser iguais."){
-        cy.contains(string).should('be.visible')
-    }
-
-    if(string == "A senha deve ter pelo menos 6 dígitos"){
-        cy.contains(string).should('be.visible')
-    }
 
 })
 

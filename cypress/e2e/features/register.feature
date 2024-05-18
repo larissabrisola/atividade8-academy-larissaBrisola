@@ -16,7 +16,7 @@ Feature: Cadastro Usuário
         And preencher o formulário com email já cadastrado
         And preencher o formulário com senha válida
         And validar a senha
-        And clicar em Cadastrar
+        And clicar em Cadastrar2
         Then o usuário não será cadastrado e receberá um aviso 'E-mail já cadastrado. Utilize outro e-mail'
 
     Scenario Outline: Não deve ser possivel realizar o cadastro com um formato de email inválido
