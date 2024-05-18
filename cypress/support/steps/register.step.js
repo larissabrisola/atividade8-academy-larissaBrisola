@@ -34,7 +34,7 @@ When('clicar em Cadastrar', ()=>{
     pageRegister.clickButtonSave()
 })
 
-When('clicar em Cadastrar2', ()=>{
+When('confirmar', ()=>{
     cy.intercept('POST', 'https://raromdb-3c39614e42d4.herokuapp.com/api/users', {
         statusCode: 409,
     }).as('fakeUser')
@@ -62,7 +62,6 @@ When('preencher o email com {string}', (string)=>{
 
 Then('o usuário não será cadastrado e receberá um aviso {string}', (string)=>{
     cy.contains(string).should('be.visible')
-
 
 })
 
