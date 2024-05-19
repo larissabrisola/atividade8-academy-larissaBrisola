@@ -45,7 +45,7 @@ When('confirmar', ()=>{
 Then('o usuário será cadastrado como usuário comum', ()=>{
     cy.intercept('POST', 'https://raromdb-3c39614e42d4.herokuapp.com/api/users',).as('sucess')
 
-    cy.get('@sucess').its('response.body').should('have.property', 'type').and('eq', 0)
+    cy.wait('@sucess').its('response.body').should('have.property', 'type').and('eq', 0)
 
     cy.get('#root > div > main > div > div.modal-overlay > div > div.modal-body').should('be.visible').and('contain', 'Cadastro realizado!')
 
