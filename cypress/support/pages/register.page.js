@@ -18,7 +18,6 @@ export default class RegisterPage {
     cy.get(this.inputPassword).type(password)
    }
 
-   
    typePasswordConfirm (password){
     cy.get(this.inputConfirmPassword).type(password)
    }

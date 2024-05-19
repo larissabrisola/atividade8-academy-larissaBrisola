@@ -50,23 +50,21 @@ Feature: Cadastro Usuário
     Scenario: Não deve ser possivel realizar o cadastro com campo senha vazio
         When preencher o formulário com nome válido
         And preencher o formulário com email válido
-        And validar a senha
         And clicar em Cadastrar
-        Then o usuário não será cadastrado e receberá um aviso 'Campo obrigatório'
+        Then o usuário não será cadastrado e receberá um aviso 'Informe a senha'
 
     Scenario: Não deve ser possivel realizar o cadastro com campo confirmação senha vazio
         When preencher o formulário com nome válido
         And preencher o formulário com email válido
         And preencher o formulário com senha válida
         And clicar em Cadastrar
-        Then o usuário não será cadastrado e receberá um aviso 'As senhas devem ser iguais.'
+        Then o usuário não será cadastrado e receberá um aviso 'Informe a senha'
 
     Scenario: Não deve ser possivel realizar o cadastro com todos campos vazios
         When clicar em Cadastrar
         Then o usuário não será cadastrado e receberá um aviso 'Informe o nome'
         Then o usuário não será cadastrado e receberá um aviso 'Informe o e-mail'
-        Then o usuário não será cadastrado e receberá um aviso 'Campo obrigatório'
-        Then o usuário não será cadastrado e receberá um aviso 'As senhas devem ser iguais.'
+        Then o usuário não será cadastrado e receberá um aviso 'Informe a senha'
 
     Scenario: Não deve ser possivel realizar o cadastro se a confirmação da senha não for igual a senha
         When preencher o formulário com nome válido
@@ -98,7 +96,7 @@ Feature: Cadastro Usuário
         And preencher o formulário com senha curta "<senhaLonga>"
         And validar a senha curta "<senhaLonga>"
         And clicar em Cadastrar
-        Then o usuário não será cadastrado e receberá um aviso 'Não foi possível cadastrar o usuário.'
+        Then o usuário não será cadastrado e receberá um aviso 'A senha deve ter no máximo 12 dígitos.'
         Examples:
             | senhaLonga      |
             | abcdefghijklm   |
