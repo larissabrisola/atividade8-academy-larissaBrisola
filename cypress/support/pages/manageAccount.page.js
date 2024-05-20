@@ -29,4 +29,10 @@ export default class ManageAccountPage {
     clickButtonAltPassword (){
         cy.get(this.buttonAltPassword).click()
     }
+
+
+    clickSelect(){
+        cy.get(this.selectTypeUser).select()
+    }
+
 }
