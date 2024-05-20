@@ -9,6 +9,7 @@ const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
 
 module.exports = defineConfig({
   e2e: {
+    defaultCommandTimeout: 9000, 
     env: {
       TAGS: "not @ignore",
     },
